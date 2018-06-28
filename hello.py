@@ -101,14 +101,28 @@ def getMember(name):
 def initialize():
 	conn=sqlite3.connect('data_file.db')
 	c=conn.cursor()
-	c.execute('''CREATE TABLE stud(user text,password text)''')
-	return redirect(('http://127.0.0.1:5000/login'))
+	c.execute('''CREATE TABLE userinfo(user text,password text,email text)''')
+	return redirect(('http://127.0.0.1:5000/register'))
+
+@app.route('/register',methods=['GET','POST'])
+def register():
+	error="Please fill all required fields"
+	if request.method == 'POST':
+		user_name=request.form['username']
+		password=request.form['password']
+		email=request.form['email']
+		conr=sqlite3.connect('data_file.db')
+		cr=conr.cursor()
+		cr.executemany('INSERT INTO userinfo VALUES (?,?,?)',[(user_name,password,email)])
+		conr.commit()
+		return redirect('http://127.0.0.1:5000/login')
+	return render_template('register.html',error=error)
 
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    error = None
+    error = 'wrong Credentials please try again'
     if request.method == 'POST':
         if request.form['username'] == 'admin' or request.form['password'] == 'admin':
             error = 'Invalid Credentials. Please try again.'
@@ -119,7 +133,7 @@ def login():
         	passwords=request.form['password']
         #	cc.executemany('INSERT INTO stud VALUES (?,?)',[(users,passwords,)])
         #	connn.commit()
-        	login=cc.execute('SELECT * from stud WHERE user="%s" AND password="%s"' % (users, passwords))
+        	login=cc.execute('SELECT * from userinfo WHERE user="%s" AND password="%s"' % (users, passwords))
         	if login.fetchone() is not None:
         		return redirect(('http://127.0.0.1:5000/members/hello/'))
         	else:
