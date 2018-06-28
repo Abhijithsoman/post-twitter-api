@@ -65,37 +65,7 @@ def getMember(name):
 	user_image="http://www.naturalprogramming.com/images/smilingpython.gif"
 	return render_template('test.html',name=name,user_image=usr)
 
-	# 
-	# 	url_retweet_dict[url_list[i]] = retweet_count_list[i]
-
-	# url_list_in_database = Album.objects.all().filter(user = request.user).values('image_url')
-
-	# temp = []
-	# for url in url_list_in_database:
-	# 	temp.append(str(url['image_url']))
-
-	# url_list_in_database = temp
-
-	# new_urls = list(set(url_list) - set(url_list_in_database))
-
-	# for url in new_urls:
-	# 	album = Album(image_url = url, user = request.user, retweet_count = url_retweet_dict[url])
-	# 	album.save()
-
-	# temp = Album.objects.all().filter(user = request.user).values('image_url', 'time_added', 'retweet_count')	
-
-	# url_list = {}
-
-	# for entry in temp:
-	# 	dt = str(entry['time_added'])[0:10]
-	# 	dt = calendar.month_name[int(dt[5:7])] + " " + dt[8:10] + ", " + dt[0:4]
-	# 	url_list[str(entry['image_url'])] = (dt, str(entry['retweet_count']))
-
-	# # print url_list
-
-	# total_entries_in_database = len(url_list)
-
-	# return render(request, 'assignment/feed.html', {'url_list': url_list})
+	
 
 @app.route("/init")
 def initialize():
