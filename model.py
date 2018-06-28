@@ -63,7 +63,7 @@ def getMember(name):
 	usr=str(url_list[0])
 	print(usr)
 	user_image="http://www.naturalprogramming.com/images/smilingpython.gif"
-	return render_template('test.html',name=name,user_image=usr)
+	return render_template('test.html',user_image=usr)
 
 	
 
