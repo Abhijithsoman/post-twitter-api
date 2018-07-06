@@ -5,18 +5,119 @@
 <h1>Hello {{name}}!</h1>
   <h2>fd5f5dfd4f4df4d4fd4f5d4</h2>
   <p>
-  	<img src="{{ user_image }}" alt=" Image">
-  </p>
+  <img src="{{ user_image }}" alt=" Image">
+</p>
 
-  <h1 onclick="this.innerHTML = 'Ooops!'">Click on this text!</h1>
-  <p id='demo'>
+<h1 onclick="makeid(this)">Click on this text!</h1>
+<p id='demo'>
 
 <button onmouseover="document.getElementById('demo').innerHTML = Date()">The time is?</button>
 
-  </p>
+</p>
+<P>    
 
+<button onclick="this.innerHTML='ON OVER' ">VOL
+</P>
+
+<h1 onclick="makeid(this)">Click on this text!</h1>
+<h3 onmouseover="revert()">mouse over</h3>
+
+ <div id ="container">
+  <div id ="animate">My animation will go here</div>
+</div> 
+<style type="text/css">
+#container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    background: yellow;
+}
+#animate {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background: red;
+}
+</style>
+
+<button onclick="myMove()" />
+
+
+<script>
+  function makeid(id) {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 5; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+	id.innerHTML=text;
+	
+		
+}
+</script>
+<script type="text/javascript">
+
+function myMove() {
+    var elem = document.getElementById("animate");
+    var pos = 0;
+    var id = setInterval(frame, 5);
+    function frame() {
+        if (pos == 350) {
+            clearInterval(id);
+        } else {
+            pos++;
+            elem.style.top = pos + 'px';
+            elem.style.left = pos + 'px';
+        }
+    }
+} 
+
+</script>
+
+<button onclick="myFunction()">Try it</button>
+
+
+<div id ="my_id" >
+
+  <p>
+Tabs
+Dropdowns
+Accordions
+Convert Weights
+Animated Buttons
+Side Navigation
+Top Navigation
+Modal Boxes
+Progress Bars
+Parallax
+Login Form
+HTML Includes
+Google Maps
+Range Sliders
+Tooltips
+Slideshow
+Filter List
+Sort List
+  </p>
   
+</div>
+
+<p><b>Note:</b> The element will not take up any space when the display property set to "none".</p>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("my_id");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+
+
 <!--<img src="http://www.naturalprogramming.com/images/smilingpython.gif"> -->
- <img src="{{ user_image }}" alt="User Image">
+ 
 </div>
 {% endblock %}

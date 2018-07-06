@@ -32,7 +32,7 @@ def members():
 def getMember(name):
 	
 
-	r = api.request('search/tweets', {'q':'#odoo', 'filter':'images'})
+	r = api.request('search/tweets', {'q':'#worldcup2018', 'filter':'images'})
 
 	url_list = []
 	retweet_count_list = []
